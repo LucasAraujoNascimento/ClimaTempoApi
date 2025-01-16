@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar target/first-spring-app-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -jar target/api_clima-0.0.1-SNAPSHOT.jar

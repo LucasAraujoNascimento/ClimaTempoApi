@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta do Clima</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .card {
+            display: inline-block;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: left;
+        }
+        .card h2, .card p {
+            margin: 10px 0;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+<h1>Resultado da Consulta</h1>
+
+<div th:if="${error}" class="alert alert-danger">
+    <p th:text="${error}"></p>
+</div>
+
+<div class="card">
+    <h2>Cidade: <span th:text="${cidade}"></span></h2>
+    <p>Temperatura: <span th:text="${temperatura}"></span> °C</p>
+    <p>Descrição: <span th:text="${descricao}"></span></p>
+    <p>Data/Hora: <span th:text="${dataHora}"></span></p>
+</div>
+
+<form action="/SalvarBusca" method="POST">
+    <input type="hidden" name="cidade" th:value="${cidade}">
+    <input type="hidden" name="temperatura" th:value="${temperatura}">
+    <input type="hidden" name="descricao" th:value="${descricao}">
+    <input type="hidden" name="dataHora" th:value="${dataHora}">
+    <button type="submit">Salvar no Histórico</button>
+</form>
+
+<button onclick="window.location.href='/'">Voltar</button>
+</body>
+</html>

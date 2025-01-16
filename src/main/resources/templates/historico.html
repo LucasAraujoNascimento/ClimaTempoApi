@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Histórico de Buscas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+        }
+        button {
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+<h1>Histórico de Clima</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Cidade</th>
+        <th>Temperatura</th>
+        <th>Descrição</th>
+        <th>Data/Hora</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${listaHistorico}">
+        <td th:text="${item.cidade}"></td>
+        <td th:text="${item.temperatura}"></td>
+        <td th:text="${item.descricao}"></td>
+        <td th:text="${#dates.format(item.dataHora, 'dd/MM/yyyy HH:mm:ss')}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br><br>
+<button onclick="window.location.href='/'">Voltar à Página Inicial</button>
+</body>
+</html>
